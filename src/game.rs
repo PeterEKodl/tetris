@@ -135,7 +135,7 @@ impl Game
             self.cleared_rows_total += rows_cleared as usize;
 
             // Decreases the move interval based on the level
-            self.move_interval = (Self::INITIAL_MOVE_INTERVAL - Duration::from_millis((self.get_level() * 30) as u64))
+            self.move_interval = (Self::INITIAL_MOVE_INTERVAL - Duration::from_millis((self.get_level() * 40) as u64))
                 .max(Self::MIN_MOVE_INTERVAL);
             
             self.score += match rows_cleared
