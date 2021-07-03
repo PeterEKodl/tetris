@@ -1,5 +1,4 @@
 use super::brick::Brick;
-use rayon::prelude::*;
 
 pub struct Grid
 {
@@ -78,12 +77,12 @@ impl Grid
 
     fn row_is_full(&self, row: usize) -> bool
     {
-        self.content[row*self.width..(row+1)*self.width].par_iter().find_any(|elem| { **elem == 0 }).is_none()
+        self.content[row*self.width..(row+1)*self.width].iter().find(|elem| { **elem == 0 }).is_none()
     }
 
     fn row_is_clear(&self, row: usize) -> bool
     {
-        self.content[row*self.width..(row+1)*self.width].par_iter().find_any(|elem| { **elem != 0 }).is_none()
+        self.content[row*self.width..(row+1)*self.width].iter().find(|elem| { **elem != 0 }).is_none()
     }
 
     fn move_tiles_down(&mut self)
